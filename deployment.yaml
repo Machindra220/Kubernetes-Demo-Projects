@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: static-profile-page
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: static-profile-page
+  template:
+    metadata:
+      labels:
+        app: static-profile-page
+    spec:
+      containers:
+      - name: nginx
+        image: static-profile-page:v1
+        ports:
+        - containerPort: 80
+
