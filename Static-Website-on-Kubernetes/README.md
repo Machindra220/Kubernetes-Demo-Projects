@@ -46,6 +46,12 @@ cd kubernetes-demo-projects
 ```bash
 minikube start
 ```
+## 📦 Dockerfile Overview
+
+```Dockerfile
+FROM nginx:alpine
+COPY . /usr/share/nginx/html
+```
 
 ### 3. Build Docker Image
 
@@ -57,38 +63,6 @@ docker build -t static-page:v1 .
 
 ```bash
 minikube image load static-page:v1
-```
-
-### 5. Deploy to Kubernetes
-
-```bash
-kubectl apply -f deployment.yaml
-kubectl apply -f service.yaml
-```
-
-### 6. Access the Webpage
-
-#### Option A: Port Forwarding
-
-```bash
-kubectl port-forward svc/static-page-service 8080:80
-```
-
-Visit: `http://localhost:8080`
-
-#### Option B: Minikube Service Helper
-
-```bash
-minikube service static-page-service
-```
-
----
-
-## 📦 Dockerfile Overview
-
-```Dockerfile
-FROM nginx:alpine
-COPY . /usr/share/nginx/html
 ```
 
 ---
@@ -136,6 +110,33 @@ spec:
     targetPort: 80
     nodePort: 30080
 ```
+
+
+### 5. Deploy to Kubernetes
+
+```bash
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+```
+
+### 6. Access the Webpage
+
+#### Option A: Port Forwarding
+
+```bash
+kubectl port-forward svc/static-page-service 8080:80
+```
+
+Visit: `http://localhost:8080`
+
+#### Option B: Minikube Service Helper
+
+```bash
+minikube service static-page-service
+```
+
+---
+
 
 ---
 
