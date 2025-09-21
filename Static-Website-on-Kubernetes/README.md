@@ -151,5 +151,3 @@ minikube service static-page-service
 ## 📜 License
 
 MIT License © Machindra220
-```
-
